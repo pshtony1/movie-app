@@ -1,48 +1,54 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import Background from "./components/Background.js";
+import MovieInfo from "./components/MovieInfo.js";
+import MovieSlider from "./components/MovieSlider.js";
+import { api } from "./api/api.js";
+import "./css/App.css";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("Constructor");
-  }
-
   state = {
-    count: 0,
+    loading: true,
+    movies: [],
+    genres: {},
   };
 
-  add() {
-    this.setState((curState) => {
-      return {
-        count: curState.count + 1,
-      };
-    });
-  }
+  getMoiveData = async () => {
+    const data = await api.getMovieData();
+    return data;
+  };
 
-  minus() {
-    this.setState((curState) => {
-      return {
-        count: curState.count - 1,
-      };
+  getGenreData = async () => {
+    const data = await api.getAllGenres();
+    return data;
+  };
+
+  setFetchDatas = async () => {
+    const movies = await this.getMoiveData();
+    const genres = await this.getGenreData();
+
+    this.setState({
+      loading: false,
+      movies,
+      genres,
     });
-  }
+  };
 
   componentDidMount() {
-    console.log("Mounted!");
-  }
-
-  componentDidUpdate() {
-    console.log("Updated!");
+    this.setFetchDatas();
   }
 
   render() {
-    console.log("Render");
+    const { loading } = this.state;
+
     return (
       <div className="App">
-        <h1>This is Counter</h1>
-        <h3>The number is {this.state.count}</h3>
-        <button onClick={this.add.bind(this)}>Add</button>
-        <button onClick={this.minus.bind(this)}>Minus</button>
+        {loading
+          ? "Loading..."
+          : [
+              <Background key="background" />,
+              <MovieInfo key="movie-info" />,
+              <MovieSlider key="movie-slider" />,
+            ]}
       </div>
     );
   }
