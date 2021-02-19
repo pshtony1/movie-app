@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const foods = [
   {
@@ -31,6 +32,14 @@ function Food({ name, stock }) {
     </div>
   );
 }
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  stock: PropTypes.shape({
+    left: PropTypes.bool.isRequired,
+    stocks: PropTypes.number,
+  }),
+};
 
 function App() {
   return (
