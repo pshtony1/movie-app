@@ -1,55 +1,51 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
-const foods = [
-  {
-    id: 1,
-    name: "kimchi",
-    stock: {
-      left: false,
-      stocks: 0,
-    },
-  },
-  {
-    id: 2,
-    name: "bibim-bap",
-    stock: {
-      left: true,
-      stocks: 3,
-    },
-  },
-];
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("Constructor");
+  }
 
-function Food({ name, stock }) {
-  return (
-    <div className="food">
-      <h3 className="food__name">{name}</h3>
-      {stock.left ? (
-        <h5 className="food__stock">{stock.stocks} Left</h5>
-      ) : (
-        <h5 className="food__stock">Sold Out</h5>
-      )}
-    </div>
-  );
-}
+  state = {
+    count: 0,
+  };
 
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  stock: PropTypes.shape({
-    left: PropTypes.bool.isRequired,
-    stocks: PropTypes.number,
-  }),
-};
+  add() {
+    this.setState((curState) => {
+      return {
+        count: curState.count + 1,
+      };
+    });
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <h1>This is Foods!</h1>
-      {foods.map((food) => (
-        <Food key={food.id} name={food.name} stock={food.stock} />
-      ))}
-    </div>
-  );
+  minus() {
+    this.setState((curState) => {
+      return {
+        count: curState.count - 1,
+      };
+    });
+  }
+
+  componentDidMount() {
+    console.log("Mounted!");
+  }
+
+  componentDidUpdate() {
+    console.log("Updated!");
+  }
+
+  render() {
+    console.log("Render");
+    return (
+      <div className="App">
+        <h1>This is Counter</h1>
+        <h3>The number is {this.state.count}</h3>
+        <button onClick={this.add.bind(this)}>Add</button>
+        <button onClick={this.minus.bind(this)}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
