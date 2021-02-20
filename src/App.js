@@ -1,9 +1,9 @@
 import React from "react";
-import Background from "./components/Background.js";
-import MovieInfo from "./components/MovieInfo.js";
-import MovieSlider from "./components/MovieSlider.js";
+import Background from "./components/Background/Background.js";
+// import MovieInfo from "./components/MovieInfo/MovieInfo.js";
+import MovieSlider from "./components/MovieSlider/MovieSlider.js";
 import { api } from "./api/api.js";
-import "./css/App.css";
+import "./styles/App.css";
 
 class App extends React.Component {
   state = {
@@ -45,9 +45,9 @@ class App extends React.Component {
         {loading
           ? "Loading..."
           : [
-              <Background key="background" />,
-              <MovieInfo key="movie-info" />,
-              <MovieSlider key="movie-slider" />,
+              <Background key="background" movies={this.state.movies} />,
+              // <MovieInfo key="movie-info" />,
+              <MovieSlider key="movie-slider" movies={this.state.movies} />,
             ]}
       </div>
     );
