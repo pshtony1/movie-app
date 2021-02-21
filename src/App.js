@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Background from "./components/Background/Background.js";
 import MovieInfo from "./components/MovieInfo/MovieInfo.js";
 import MovieSlider from "./components/MovieSlider/MovieSlider.js";
