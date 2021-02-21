@@ -40,13 +40,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setFetchDatas();
-
-    // console.log(document.querySelector(".movie__poster-item"));
-
-    // const item = ReactDOM.findDOMNode(
-    //   document.querySelector(".movie__poster-item")
-    // );
-    // item.classList.add("active");
   }
 
   renderInfo = (data) => {

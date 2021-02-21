@@ -70,14 +70,3 @@ class MovieInfo extends React.Component {
 }
 
 export default MovieInfo;
-
-// const {
-//     id,
-//     title,
-//     overview,
-//     release_date,
-//     backdrop_path: bgImage,
-//     poster_path: poster,
-//     genre_ids: genres,
-//     vote_average: rating,
-//   } = movie;
