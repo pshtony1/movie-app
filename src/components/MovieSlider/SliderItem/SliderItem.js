@@ -7,7 +7,7 @@ import "./SliderItem.css";
 
 class SliderItem extends React.Component {
   render() {
-    const { title, poster, id, onClick, rating, year } = this.props;
+    const { title, poster, id, onClick, rating, year, isFirst } = this.props;
 
     function createRate(rating) {
       const { fill, half, empty } = parseRate(rating);
@@ -15,17 +15,22 @@ class SliderItem extends React.Component {
       let key = 0;
 
       for (let i = 0; i < fill; i++)
-        component.push(<AiFillStar key={"star" + ++key} />);
+        component.push(<AiFillStar key={"star-poster__" + ++key} />);
       for (let i = 0; i < half; i++)
-        component.push(<BsStarHalf key={"star" + ++key} />);
+        component.push(<BsStarHalf key={"star-poster__" + ++key} />);
       for (let i = 0; i < empty; i++)
-        component.push(<AiOutlineStar key={"star" + ++key} />);
+        component.push(<AiOutlineStar key={"star-poster__" + ++key} />);
 
       return component;
     }
 
     return (
-      <div key={id} id={id} className="movie__poster-item" onClick={onClick}>
+      <div
+        key={id}
+        id={id}
+        className={isFirst ? "movie__poster-item active" : "movie__poster-item"}
+        onClick={onClick}
+      >
         <img className="movie__poster" src={poster} alt={title} />
         <div className="movie__poster-info">
           <span className="poster-info__title">{title}</span>

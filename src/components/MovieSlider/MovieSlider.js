@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import Carousel from "react-multi-carousel";
 import SliderItem from "./SliderItem/SliderItem.js";
 import { api } from "../../api/api.js";
-import BackGround from "../Background/Background.js";
 import "./MovieSlider.css";
 import "react-multi-carousel/lib/styles.css";
 
@@ -34,7 +33,11 @@ class MovieSlider extends React.Component {
   }
 
   renderItem = () => {
-    return this.props.movies.map((movie) => {
+    let idx = 0;
+
+    const itemComponents = this.props.movies.map((movie) => {
+      idx++;
+
       const {
         id,
         poster_path,
@@ -42,6 +45,8 @@ class MovieSlider extends React.Component {
         vote_average,
         release_date,
         backdrop_path,
+        overview,
+        genre_ids,
       } = movie;
 
       return (
@@ -52,6 +57,7 @@ class MovieSlider extends React.Component {
           title={title}
           rating={vote_average}
           year={release_date.slice(0, 4)}
+          isFirst={idx === 1 ? true : false}
           onClick={(e) => {
             let target = e.target;
             if (target.matches("img")) return;
@@ -70,10 +76,20 @@ class MovieSlider extends React.Component {
             });
 
             targetItem.classList.add("active");
+
+            this.props.renderInfo({
+              title,
+              rating: vote_average,
+              year: release_date.slice(0, 4),
+              overview,
+              genres: genre_ids,
+            });
           }}
         />
       );
     });
+
+    return itemComponents;
   };
 
   render() {

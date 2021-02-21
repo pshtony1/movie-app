@@ -1,11 +1,17 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Background from "./components/Background/Background.js";
-// import MovieInfo from "./components/MovieInfo/MovieInfo.js";
+import MovieInfo from "./components/MovieInfo/MovieInfo.js";
 import MovieSlider from "./components/MovieSlider/MovieSlider.js";
 import { api } from "./api/api.js";
 import "./styles/App.css";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
+
   state = {
     loading: true,
     movies: [],
@@ -35,7 +41,18 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setFetchDatas();
+
+    // console.log(document.querySelector(".movie__poster-item"));
+
+    // const item = ReactDOM.findDOMNode(
+    //   document.querySelector(".movie__poster-item")
+    // );
+    // item.classList.add("active");
   }
+
+  renderInfo = (data) => {
+    this.ref.current.renderInfo(data);
+  };
 
   render() {
     const { loading } = this.state;
@@ -46,8 +63,17 @@ class App extends React.Component {
           ? "Loading..."
           : [
               <Background key="background" movies={this.state.movies} />,
-              // <MovieInfo key="movie-info" />,
-              <MovieSlider key="movie-slider" movies={this.state.movies} />,
+              <MovieInfo
+                key="movie-info"
+                movies={this.state.movies}
+                ref={this.ref}
+                genres={this.state.genres}
+              />,
+              <MovieSlider
+                key="movie-slider"
+                movies={this.state.movies}
+                renderInfo={this.renderInfo}
+              />,
             ]}
       </div>
     );
