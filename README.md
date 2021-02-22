@@ -208,24 +208,25 @@ class CustomComponent extends React.Component {
     )
   }
 }
----
+```
 
 이렇게 되면 `OtherComponent_2`에서는 `this.props.other`로 `ref` 객체를 얻을 수 있다.
 
 <br />
 
-### ✔ React에서 `Emnet` 사용하기
+#### ✔ `React`에서 `VSCode`의 `Emnet` 사용하기
 
-`JSX` 작성할때 `Enmet` 안되서 불편했음.
+`JSX` 작성할때 `Enmet`이 안되서 불편했디.  
+아래와 같은 방법으로 해결했다.
 
-1. VSCode 설정 열기
+1. `VSCode` 설정 열기
 
    - Windows: `Ctrl + ,`
    - Mac OS: `Command + ,`
 
 2. WorkSpace 설정에 들어가기
 
-3. settings.json 열기
+3. `settings.json` 열기
 
 4. 아래 코드 넣어주기
 
@@ -236,3 +237,43 @@ class CustomComponent extends React.Component {
    }
 }
 ```
+
+👍 해결!
+
+<br />
+
+#### ✔ `create-react-app`에서 `dotenv` 사용하기
+
+Movie API를 받아오는 과정에서 api-key를 환경변수의 형태로 숨길 필요가 있었다.
+
+찾아보니, `create-react-app`, 정확히는 `react-scripts`에서 `dotenv`를 defalut로 지원한다!
+
+1. 프로젝트 root 디렉토리에 `.env` 파일을 만든다.
+
+2. 파일 내에 환경변수를 작성하는데, 환경변수의 이름 앞에는 무조건 `REACT_APP`이 붙어야만한다.
+
+```
+// .env
+
+REACT_APP_API_KEY=.....
+REACT_APP_API_URL=.....
+REACT_APP_VARIABLE=.....
+```
+
+3. JS파일에서 `process.env.환경변수이름`의 형태로 사용하면 끝이다.
+```
+// .env
+
+REACT_APP_API_KEY=.....
+
+// api.js
+const data = await axios.get(URL + process.env.REACT_APP_API_KEY)
+```
+
+<br />
+
+## 4. 결론
+
+진짜 최고다. `Vanilla JS`에서 불편했던 것들이 전부 해결되는 느낌이다.
+
+
