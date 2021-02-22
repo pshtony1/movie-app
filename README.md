@@ -19,6 +19,8 @@
 * `React Hooks`를 배우지 않은 상태에서 진행하다보니, `Class Component`가 `Function Component`보다 훨씬 좋게 느껴졌다. 
    * 살짝 `Hooks`의 메서드들을 들여다봤는데, 소름돋게 멋지다. 어서 배우고싶다고 느꼈다.
 
+<br />
+
 ## 2. 스택 
 * `React` 세팅 관련은 전부 이것을 이용했다(`React`, `Babel`, `Webpack` 등).
    * [`start-react-app`](https://github.com/facebook/create-react-app)
@@ -32,6 +34,8 @@
 
 * 영화 API
   * [TMDB](https://developers.themoviedb.org/3)
+
+<br />
 
 ## 3. 알게 된 것들
 
@@ -48,9 +52,9 @@ function CustomComponent() {
 import React from "react"
 
 class CustomComponent extends React.Component {
-   render() {
-      return <div></div>
-   }
+  render() {
+     return <div></div>
+  }
 }
 ```
 
@@ -66,9 +70,9 @@ function CustomComponent(props) {
 
 // Class Component
 class CustomComponent extends React.Component {
-   render() {
-      return <div>This is {this.props.wow}</div>
-   }
+  render() {
+     return <div>This is {this.props.wow}</div>
+  }
 }
 
 <CustomComponent wow="wow~~" />
@@ -93,15 +97,15 @@ function CustomComponent(props) {
 
 // Class Component
 class CustomComponent extends React.Component {
-   render() {
-      return <div>This is {this.props.wow}</div>
-   }
+  render() {
+     return <div>This is {this.props.wow}</div>
+  }
 }
 
 [
-   <CustomComponent key="1" wow="wow~" />,
-   <CustomComponent key="2" wow="wow!" />,
-   <CustomComponent key="3" wow="wow?" />
+  <CustomComponent key="1" wow="wow~" />,
+  <CustomComponent key="2" wow="wow!" />,
+  <CustomComponent key="3" wow="wow?" />
 ]
 ```
 
@@ -113,7 +117,7 @@ class CustomComponent extends React.Component {
 import PropTypes from "prop-types";
 
 CustomComponent.propTypes = {
-   wow: PropTypes.string.isRequired,
+  wow: PropTypes.string.isRequired,
 }
 
 <CustomComponent wow="wow~" />
@@ -128,13 +132,13 @@ CustomComponent.propTypes = {
 
 ```
 class CustomComponent extends React.Component {
-   state = {
-      data: "wow~",
-   };
+  state = {
+     data: "wow~",
+  };
 
-   render() {
-      return <div></div>
-   }
+  render() {
+     return <div></div>
+  }
 }
 ```
 
@@ -145,29 +149,27 @@ class CustomComponent extends React.Component {
 
 ```
 class CustomComponent extends React.Component {
-   state = {
-      data: "",
-   };
+  state = {
+     data: "",
+  };
 
-   addChar = () => {
-      this.setState(curState => {
-         return {
-            data: curState.data + "a",
-         };
-      })
-   }
+  addChar = () => {
+    this.setState(curState => {
+      return {
+        data: curState.data + "a",
+      };
+    })
+  }
 
-   render() {
-      return <button onClick={this.addChar}></button>
-   }
+  render() {
+     return <button onClick={this.addChar}></button>
+  }
 }
 ```
 
 <br />
 
-#### ✔ `React Component`의 생명 주기(Life Cycle)
-
-[참고](https://ko.reactjs.org/docs/react-component.html)
+#### ✔ `React Component`의 생명 주기(Life Cycle) - [Docs](https://ko.reactjs.org/docs/react-component.html)
 
 많이 쓰일법한 것들 위주로 정리.
 
@@ -187,7 +189,30 @@ class CustomComponent extends React.Component {
 - Unmounting
   - componentDidUnmount()
 
+<br />
+
+#### ✔ 다른 component의 `state`나 메서드에 접근하려면 `ref`를 이용하자.
+*`Function Component`에서는 `Hooks`의 `useRef`를 이용하면 된다.*
+
+```
+class CustomComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+  }
+
+  render() {
+    return (
+      <OtherComponent_1 ref={this.ref} />
+      <OtherComponent_2 other={this.ref} />
+    )
+  }
+}
 ---
+
+이렇게 되면 `OtherComponent_2`에서는 `this.props.other`로 `ref` 객체를 얻을 수 있다.
+
+<br />
 
 ### ✔ React에서 `Emnet` 사용하기
 
