@@ -2,9 +2,35 @@
 
 `React`가, `SPA Framework`가 도대체 뭐길래 찍먹해보는 첫 React 프로젝트
 
----
+<br />
 
 [프로젝트 링크](https://pshtony1.github.io/movie-app/)
+
+![image](https://user-images.githubusercontent.com/67461578/108648432-91b4ea00-74fe-11eb-9e7f-058cbc1af8f0.png)
+
+---
+
+## 1. 내가 느낀 React
+* 모든 기능을 나누어 전체적인 어플리케이션을 구현하는 느낌. 최고다.
+* `state` 컨셉이 어마무시하게 좋다. 그러나 간단한 방법으로 다른 component의 `state`나 메서드를 불러올 수 없다는 점이 아쉽다.
+   * 후술하지만, `React`의 `ref` 개념으로 해결했다.
+* `props` 컨셉도 만만치 않게 좋다. 이 컨셉덕분에 모든 component들을 연결하는 느낌이 강하게 들었다.
+* 만져보니 알았다. `React`는 **프레임워크가 아니라 무조건 라이브러리**다. 다른 프레임워크와는 달리, 나의 선택을 강제하지 않았다. 덕분에 컨셉에 종속되지 않고 편하게 구현할 수 있었다!
+* `React Hooks`를 배우지 않은 상태에서 진행하다보니, `Class Component`가 `Function Component`보다 훨씬 좋게 느껴졌다. 
+   * 살짝 `Hooks`의 메서드들을 들여다봤는데, 소름돋게 멋지다. 어서 배우고싶다고 느꼈다.
+
+## 2. 스택 
+* `React` 세팅 관련은 전부 이것을 이용했다(`React`, `Babel`, `Webpack` 등).
+   * [`start-react-app`](https://github.com/facebook/create-react-app)
+
+* 3rd Patry
+   * [`prop-types`](https://www.npmjs.com/package/prop-types)
+   * [`react-icons`](https://www.npmjs.com/package/react-icons)
+   * [`react-multi-carousel`](https://www.npmjs.com/package/react-multi-carousel)
+   * [`axios`](https://www.npmjs.com/package/axios)
+   * [`dotenv`](https://www.npmjs.com/package/dotenv)
+
+---
 
 ### React에서 `Emnet` 사용하기
 
