@@ -35,8 +35,8 @@
 
 ## 3. 알게 된 것들
 
-#### `JSX`를 이용해 `HTML Element`를 return하는 함수 또는 클래스를 component라고 한다.
-   * 클래스 형태로 component를 만들기 위해서는 `React.Component`를 상속 받아야한다.
+#### ✔ `JSX`를 이용해 `HTML Element`를 return하는 함수 또는 클래스를 component라고 한다.
+*클래스 형태로 component를 만들기 위해서는 `React.Component`를 상속 받아야한다.*
 
 ```
 // Function Component
@@ -56,7 +56,7 @@ class CustomComponent extends React.Component {
 
 <br />
 
-#### 각 `Component`에게 `props`를 이용해 원하는 데이터를 넘겨줄 수 있다.
+#### ✔ 각 `Component`에게 `props`를 이용해 원하는 데이터를 넘겨줄 수 있다.
 
 ```
 // Function Component
@@ -76,7 +76,7 @@ class CustomComponent extends React.Component {
 
 <br />
 
-#### 같은 `Component`를 배열(리스트)에 담아 여러개 렌더링 하게 되면 아래와 같은 에러가 발생한다.
+#### ✔ 같은 `Component`를 배열(리스트)에 담아 여러개 렌더링 하게 되면 아래와 같은 에러가 발생한다.
 
 ```
 Warning: Each child in a list should have a unique "key" prop.
@@ -107,7 +107,7 @@ class CustomComponent extends React.Component {
 
 <br />
 
-#### `prop-types`를 이용하면, `Component`에 전달되는 `props`들의 타입을 체크할 수 있다!
+#### ✔ `prop-types`를 이용하면, `Component`에 전달되는 `props`들의 타입을 체크할 수 있다!
 
 ```
 import PropTypes from "prop-types";
@@ -123,7 +123,7 @@ CustomComponent.propTypes = {
 
 <br />
 
-#### `Class Component`는 필요한 데이터(상태)를 저장할 수 있는 `state`를 만들 수 있다.
+#### ✔ `Class Component`는 필요한 데이터(상태)를 저장할 수 있는 `state`를 만들 수 있다.
 *`Function Component`는 `React Hooks`를 이용하면 `state`를 만들 수 있다.*
 
 ```
@@ -140,7 +140,7 @@ class CustomComponent extends React.Component {
 
 <br />
 
-#### `state`를 변경할 때는 `this.state`로 접근해서 변경하는 것 대신, `this.setState` 메서드를 이용하는 것이 바람직하다. 
+#### ✔ `state`를 변경할 때는 `this.state`로 접근해서 변경하는 것 대신, `this.setState` 메서드를 이용하는 것이 바람직하다. 
 *또한, `this.setState`를 호출하게 되면, `Component`가 다시 렌더링된다.*
 
 ```
@@ -165,7 +165,7 @@ class CustomComponent extends React.Component {
 
 <br />
 
-#### `React Component`의 생명 주기(Life Cycle)
+#### ✔ `React Component`의 생명 주기(Life Cycle)
 
 [참고](https://ko.reactjs.org/docs/react-component.html)
 
@@ -189,7 +189,7 @@ class CustomComponent extends React.Component {
 
 ---
 
-### React에서 `Emnet` 사용하기
+### ✔ React에서 `Emnet` 사용하기
 
 `JSX` 작성할때 `Enmet` 안되서 불편했음.
 
